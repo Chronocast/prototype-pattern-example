@@ -1,17 +1,15 @@
 package pokedexApp;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,16 +17,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
+import pokemon.Pokemon;
 
-import java.io.File;
-import java.net.URL;
+import java.util.List;
 
 public class bootPokedex extends Application
 {
@@ -68,7 +60,7 @@ public class bootPokedex extends Application
         BorderPane thePane = new BorderPane();
 
         thePane.setLeft(westPane());
-        thePane.setBottom(southPane());
+        thePane.setRight(eastPane());
 
         return thePane;
     }
@@ -76,7 +68,7 @@ public class bootPokedex extends Application
     private Pane westPane()
     {
         VBox westPanel = new VBox();
-        westPanel.setAlignment(Pos.TOP_CENTER);
+        westPanel.setAlignment(Pos.CENTER);
         westPanel.setSpacing(10);
         westPanel.setId("west");
 
@@ -100,7 +92,8 @@ public class bootPokedex extends Application
 //            final URL resource = getClass().getResource("img/ditto.mp3");
 //            final AudioClip clip = new AudioClip(resource.toString());
 //            clip.play(1.0);
-            alert.setContentText("Cloning into= " + pokemonSelector.getEditor().getText() + "!");
+            Object selectedPokemon = pokemonSelector.getValue();
+            alert.setContentText("Cloning into " + selectedPokemon);
             alert.showAndWait();
 
 
@@ -108,19 +101,30 @@ public class bootPokedex extends Application
 
         westPanel.getChildren().add(dittoView);
         westPanel.getChildren().add(comboLabel);
-        westPanel.getChildren().add(comboBuild());
+        westPanel.getChildren().add(pokemonSelector);
 
         return westPanel;
     }
 
     private Pane eastPane()
     {
-        HBox eastPanel = new HBox();
+        VBox eastPanel = new VBox();
         eastPanel.setAlignment(Pos.CENTER);
         eastPanel.setSpacing(10);
         eastPanel.setId("east");
 
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setPrefHeight(550);
+        scrollPane.setPrefWidth(325);
 
+        Pokemon pokemons = new Pokemon();
+
+        List<Pokemon> pokeList = pokemons.loadData();
+
+
+
+        eastPanel.getChildren().add(scrollPane);
 
         return eastPanel;
     }
@@ -158,13 +162,14 @@ public class bootPokedex extends Application
         return new Pane();
     }
 
-    private ComboBox comboBuild()
+    private ComboBox<String> comboBuild()
     {
         //do I really need a final?
-        final String[] cloningSubject = {" "};
+        //final String[] cloningSubject = {" "};
 
-        final ComboBox<String> comboBox = new ComboBox<String>();
-        comboBox.getItems().addAll("bulbasaur","ivysaur","venusaur","charmander","charmeleon","charizard",
+//        final ComboBox<String> comboBox = new ComboBox<String>();
+//        comboBox.getItems().addAll(
+                ObservableList<String> items = FXCollections.observableArrayList("bulbasaur","ivysaur","venusaur","charmander","charmeleon","charizard",
                 "squirtle","wartortle","blastoise","caterpie","metapod","butterfree","weedle","kakuna","beedrill",
                 "pidgey","pidgeotto","pidgeot", "rattata","raticate","spearow","fearow","ekans","arbok","pikachu",
                 "raichu","sandshrew","sandslash", "nidoran♀","nidorina","nidoqueen","nidoran♂","nidorino","nidoking",
@@ -182,10 +187,14 @@ public class bootPokedex extends Application
                 "kabutops","aerodactyl","snorlax","articuno","zapdos","moltres","dratini","dragonair","dragonite",
                 "mewtwo","mew"
         );
+
+        ComboBox comboBox = new ComboBox();
         comboBox.setPromptText("Clone a Pokemon");
-        comboBox.setEditable(true);
-        comboBox.valueProperty().addListener((observable, oldValue, newValue) ->
-                cloningSubject[0] = newValue);
+        comboBox.getItems().addAll(items);
+
+//        comboBox.setEditable(true);
+//        comboBox.valueProperty().addListener((observable, oldValue, newValue) ->
+//                cloningSubject[0] = newValue);
         return comboBox;
     }
 }

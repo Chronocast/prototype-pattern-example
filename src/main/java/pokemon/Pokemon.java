@@ -16,10 +16,7 @@ public class Pokemon implements Cloneable{
     }
     public void loadData(){
         //read all employees from database and put into the list
-        pkmnList.add("Pankaj");
-        pkmnList.add("Raj");
-        pkmnList.add("David");
-        pkmnList.add("Lisa");
+        pkmnList.add("ditto");
     }
 
     public List<String> getPkmnList() {
