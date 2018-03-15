@@ -64,6 +64,7 @@ public class bootPokedex extends Application
 
         thePane.setLeft(westPane());
         thePane.setRight(eastPane());
+        thePane.setBottom(southPane());
 
         return thePane;
     }
@@ -87,8 +88,6 @@ public class bootPokedex extends Application
         alert.setTitle("I'm a ditto!");
         alert.setHeaderText(null);
 
-
-
         dittoView.setOnMouseClicked((MouseEvent e) -> {
             Object selectedPokemon = pokemonSelector.getValue();
             alert.setContentText("Cloning into " + selectedPokemon);
@@ -107,11 +106,13 @@ public class bootPokedex extends Application
                 System.out.println(pokemonPrototype);
                 newMyPokemon.add(DittoFactory.getInstance(DittoFactory.PokemonType.PIKACHU));
                 System.out.println(newMyPokemon);
+
+
+
             } catch (CloneNotSupportedException err)
             {
                 err.printStackTrace();
             }
-
         });
 
         westPanel.getChildren().add(dittoView);
@@ -145,10 +146,6 @@ public class bootPokedex extends Application
 
         ListView pokemonList = new ListView(pokemonObservableList);
 
-
-
-
-
         eastPanel.getChildren().addAll(scrollPane, pokemonList);
 
         return eastPanel;
@@ -161,7 +158,16 @@ public class bootPokedex extends Application
 
     private Pane southPane()
     {
-        return new Pane();
+        VBox southPanel = new VBox();
+        southPanel.setAlignment(Pos.BOTTOM_CENTER);
+        southPanel.setSpacing(10);
+        southPanel.setId("east");
+
+        Button button = refresh();
+
+        southPanel.getChildren().add(button);
+
+        return southPanel;
     }
 
     private ComboBox<String> comboBuild()
@@ -198,5 +204,18 @@ public class bootPokedex extends Application
 //        comboBox.valueProperty().addListener((observable, oldValue, newValue) ->
 //                cloningSubject[0] = newValue);
         return comboBox;
+    }
+
+    private Button refresh () {
+        Button refreshButton = new Button("Refresh Pokedex");
+        refreshButton.setId("refresh-btn");
+
+        //When clicked, the Edit Reminders scene will show
+        refreshButton.setOnAction(event -> {  //used lambda expression
+            stage.setScene(StartScreen());
+            stage.show();
+        });
+
+        return refreshButton;
     }
 }
