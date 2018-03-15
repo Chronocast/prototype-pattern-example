@@ -10,6 +10,8 @@ public class DittoFactory
         public static final String PIKACHU = "pikachu";
         public static final String CHARMANDER = "charmander";
 
+        public static final String[] POKEMON = {"pikachu", "charmander"};
+
     }
 
     private static java.util.Map<String, IPokemon> prototypes = new java.util.HashMap<>();
@@ -17,6 +19,7 @@ public class DittoFactory
     static
     {
         //loop over array add all
+
         prototypes.put(PokemonType.PIKACHU, new Pikachu());
     }
 

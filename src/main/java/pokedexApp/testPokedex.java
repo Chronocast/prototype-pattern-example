@@ -77,14 +77,6 @@ public class testPokedex extends Application
 
         dittoView.setOnMouseClicked((MouseEvent e) -> {
             String selectedPokemon = pokemonSelector.getValue().toString();
-            //alert.setContentText("Cloning into " + selectedPokemon);
-            //alert.showAndWait();
-
-            String nameconverter = pokemonSelector.getValue().toString().toUpperCase();
-
-            System.out.println(nameconverter);
-
-            //good spot for slide
             try
             {
                 IPokemon pokemonPrototype = DittoFactory.getInstance(selectedPokemon);
@@ -92,8 +84,6 @@ public class testPokedex extends Application
                 newMyPokemon.add(pokemonPrototype);
                 System.out.println(newMyPokemon);
                 pokemonObservableList.add(pokemonPrototype);
-
-
             } catch (CloneNotSupportedException err)
             {
                 err.printStackTrace();
