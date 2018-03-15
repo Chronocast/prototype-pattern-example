@@ -100,8 +100,7 @@ public class bootPokedex extends Application
 //            final URL resource = getClass().getResource("img/ditto.mp3");
 //            final AudioClip clip = new AudioClip(resource.toString());
 //            clip.play(1.0);
-            Object whichPKMN = pokemonSelector.getValue();
-            alert.setContentText("I'm a ditto!" + whichPKMN.toString());
+            alert.setContentText("I'm a ditto!" + pokemonSelector.getValue());
             alert.showAndWait();
 
 
@@ -185,14 +184,8 @@ public class bootPokedex extends Application
         );
         comboBox.setPromptText("Clone a Pokemon");
         comboBox.setEditable(true);
-        comboBox.valueProperty().addListener(new ChangeListener<String>()
-        {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
-            {
-                cloningSubject[0] = newValue;
-            }
-        });
+        comboBox.valueProperty().addListener((observable, oldValue, newValue) ->
+                cloningSubject[0] = newValue);
         return comboBox;
     }
 }
