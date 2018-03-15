@@ -14,13 +14,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import pokemon.Pokemon;
-
-import java.util.List;
+import pokemon.DittoFactory;
+import pokemon.IPokemon;
+import pokemon.Pikachu;
 
 public class bootPokedex extends Application
 {
@@ -84,19 +83,10 @@ public class bootPokedex extends Application
         alert.setTitle("I'm a ditto!");
         alert.setHeaderText(null);
 
-
-
-
         dittoView.setOnMouseClicked((MouseEvent e) -> {
-
-//            final URL resource = getClass().getResource("img/ditto.mp3");
-//            final AudioClip clip = new AudioClip(resource.toString());
-//            clip.play(1.0);
             Object selectedPokemon = pokemonSelector.getValue();
             alert.setContentText("Cloning into " + selectedPokemon);
             alert.showAndWait();
-
-
         });
 
         westPanel.getChildren().add(dittoView);
@@ -118,9 +108,14 @@ public class bootPokedex extends Application
         scrollPane.setPrefHeight(550);
         scrollPane.setPrefWidth(325);
 
-        Pokemon pokemons = new Pokemon();
-
-        List<Pokemon> pokeList = pokemons.loadData();
+        try
+        {
+            String pikachuPrototype = DittoFactory.getInstance(DittoFactory.PokemonType.PIKACHU).toString();
+            System.out.println(pikachuPrototype);
+        } catch (CloneNotSupportedException e)
+        {
+            e.printStackTrace();
+        }
 
 
 
@@ -136,29 +131,6 @@ public class bootPokedex extends Application
 
     private Pane southPane()
     {
-//        Button button = new Button();
-
-//        button.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent e) {
-//                if (emailComboBox.getValue() != null &&
-//                        !emailComboBox.getValue().toString().isEmpty()){
-//                    notification.setText("Your message was successfully sent"
-//                            + " to " + address);
-//                    emailComboBox.setValue(null);
-//                    if (priorityComboBox.getValue() != null &&
-//                            !priorityComboBox.getValue().toString().isEmpty()){
-//                        priorityComboBox.setValue(null);
-//                    }
-//                    subject.clear();
-//                    text.clear();
-//                }
-//                else {
-//                    notification.setText("You have not selected a recipient!");
-//                }
-//            }
-//        });
-
         return new Pane();
     }
 
