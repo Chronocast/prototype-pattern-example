@@ -1,6 +1,6 @@
 package pokemon;
 
-import javax.swing.*;
+import java.util.Map;
 
 import static pokemon.DittoFactory.PokemonType.POKEMONS;
 
@@ -8,15 +8,11 @@ public class DittoFactory
 {
     public static class PokemonType
     {
-        //put in array
-        //public static final String PIKACHU = "pikachu";
-        //public static final String CHARMANDER = "charmander";
-
         public static final String[] POKEMONNAMES = {"charmander", "pikachu", "scyther"};
         public static final IPokemon[] POKEMONS = {Charmander::new, Pikachu::new, Scyther::new};
     }
 
-    private static java.util.Map<String, IPokemon> prototypes = new java.util.HashMap<>();
+    private static Map<String, IPokemon> prototypes = new java.util.HashMap<>();
 
     static
     {

@@ -102,12 +102,6 @@ public class testPokedex extends Application
         eastPanel.setSpacing(10);
         eastPanel.setId("east");
 
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        scrollPane.setPrefHeight(550);
-        scrollPane.setPrefWidth(325);
-
-        //List<String> getPokemonList = myPokemon;
-
         ArrayList<IPokemon> theListedPokemon = new ArrayList<>();
 
         theListedPokemon.addAll(newMyPokemon);
@@ -118,8 +112,12 @@ public class testPokedex extends Application
 
         pokemonList.setItems(pokemonObservableList);
 
+
+
         pokemonList.setPrefHeight(550);
         pokemonList.setPrefWidth(325);
+
+
 
         eastPanel.getChildren().add(pokemonList);
 
