@@ -1,6 +1,7 @@
 package pokedexApp;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -64,7 +65,7 @@ public class bootPokedex extends Application
 
         thePane.setLeft(westPane());
         thePane.setRight(eastPane());
-        thePane.setBottom(southPane());
+        //thePane.setBottom(southPane());
 
         return thePane;
     }
@@ -98,7 +99,9 @@ public class bootPokedex extends Application
             //System.out.println(myPokemon);
             pkmnCount++;
 
-            //String nameconverter = pokemonSelector.getValue().toString().toUpperCase();
+            String nameconverter = pokemonSelector.getValue().toString().toUpperCase();
+
+            System.out.println(nameconverter);
 
             try
             {
@@ -106,7 +109,6 @@ public class bootPokedex extends Application
                 System.out.println(pokemonPrototype);
                 newMyPokemon.add(DittoFactory.getInstance(DittoFactory.PokemonType.PIKACHU));
                 System.out.println(newMyPokemon);
-
 
 
             } catch (CloneNotSupportedException err)
@@ -146,7 +148,10 @@ public class bootPokedex extends Application
 
         ListView pokemonList = new ListView(pokemonObservableList);
 
-        eastPanel.getChildren().addAll(scrollPane, pokemonList);
+        pokemonList.setPrefHeight(550);
+        pokemonList.setPrefWidth(325);
+
+        eastPanel.getChildren().addAll(pokemonList);
 
         return eastPanel;
     }
@@ -156,19 +161,19 @@ public class bootPokedex extends Application
         return new Pane();
     }
 
-    private Pane southPane()
-    {
-        VBox southPanel = new VBox();
-        southPanel.setAlignment(Pos.BOTTOM_CENTER);
-        southPanel.setSpacing(10);
-        southPanel.setId("east");
-
-        Button button = refresh();
-
-        southPanel.getChildren().add(button);
-
-        return southPanel;
-    }
+//    private Pane southPane()
+//    {
+//        VBox southPanel = new VBox();
+//        southPanel.setAlignment(Pos.BOTTOM_CENTER);
+//        southPanel.setSpacing(10);
+//        southPanel.setId("east");
+//
+//        Button button = refresh();
+//
+//        southPanel.getChildren().add(button);
+//
+//        return southPanel;
+//    }
 
     private ComboBox<String> comboBuild()
     {
@@ -212,8 +217,9 @@ public class bootPokedex extends Application
 
         //When clicked, the Edit Reminders scene will show
         refreshButton.setOnAction(event -> {  //used lambda expression
-            stage.setScene(StartScreen());
-            stage.show();
+
+            stage.close();
+            //Platform.runLater( () -> new bootPokedex().start( new Stage() ) );
         });
 
         return refreshButton;
