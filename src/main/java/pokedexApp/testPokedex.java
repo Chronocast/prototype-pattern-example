@@ -29,6 +29,7 @@ public class testPokedex extends Application
     private int pkmnCount = 0;
     ListView pokemonList;
     ObservableList<String> items;
+    ObservableList<IPokemon> pokemonObservableList;
 
     public void start(Stage stage) throws Exception
     {
@@ -75,20 +76,22 @@ public class testPokedex extends Application
         alert.setHeaderText(null);
 
         dittoView.setOnMouseClicked((MouseEvent e) -> {
-            Object selectedPokemon = pokemonSelector.getValue();
-            alert.setContentText("Cloning into " + selectedPokemon);
-            alert.showAndWait();
+            String selectedPokemon = pokemonSelector.getValue().toString();
+            //alert.setContentText("Cloning into " + selectedPokemon);
+            //alert.showAndWait();
 
             String nameconverter = pokemonSelector.getValue().toString().toUpperCase();
 
             System.out.println(nameconverter);
 
+            //good spot for slide
             try
             {
-                String pokemonPrototype = DittoFactory.getInstance(DittoFactory.PokemonType.PIKACHU).toString();
+                IPokemon pokemonPrototype = DittoFactory.getInstance(selectedPokemon);
                 System.out.println(pokemonPrototype);
-                newMyPokemon.add(DittoFactory.getInstance(DittoFactory.PokemonType.PIKACHU));
+                newMyPokemon.add(pokemonPrototype);
                 System.out.println(newMyPokemon);
+                pokemonObservableList.add(pokemonPrototype);
 
 
             } catch (CloneNotSupportedException err)
@@ -121,7 +124,7 @@ public class testPokedex extends Application
 
         theListedPokemon.addAll(newMyPokemon);
 
-        ObservableList<IPokemon> pokemonObservableList = FXCollections.observableArrayList(theListedPokemon);
+        pokemonObservableList = FXCollections.observableArrayList(theListedPokemon);
 
         pokemonList = new ListView(pokemonObservableList);
 
