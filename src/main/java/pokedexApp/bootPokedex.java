@@ -86,7 +86,7 @@ public class bootPokedex extends Application
 
         Label comboLabel = new Label("Which Pokemon should Ditto clone?");
 
-        final ComboBox pokemonSelector = comboBuild();
+        ComboBox pokemonSelector = comboBuild();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("I'm a ditto!");
@@ -100,7 +100,7 @@ public class bootPokedex extends Application
 //            final URL resource = getClass().getResource("img/ditto.mp3");
 //            final AudioClip clip = new AudioClip(resource.toString());
 //            clip.play(1.0);
-            alert.setContentText("I'm a ditto!" + pokemonSelector.getValue());
+            alert.setContentText("Cloning into= " + pokemonSelector.getEditor().getText() + "!");
             alert.showAndWait();
 
 
