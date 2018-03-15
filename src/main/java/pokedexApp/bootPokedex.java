@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,9 +18,16 @@ import pokemon.DittoFactory;
 import pokemon.IPokemon;
 import pokemon.Pikachu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class bootPokedex extends Application
 {
     private Stage stage;
+    private ScrollPane scrollPane = new ScrollPane();
+    private List<String> myPokemon = new ArrayList<>();
+    private List<IPokemon> newMyPokemon = new ArrayList();
+    private int pkmnCount = 0;
 
     public void start(Stage stage) throws Exception
     {
@@ -83,10 +87,31 @@ public class bootPokedex extends Application
         alert.setTitle("I'm a ditto!");
         alert.setHeaderText(null);
 
+
+
         dittoView.setOnMouseClicked((MouseEvent e) -> {
             Object selectedPokemon = pokemonSelector.getValue();
             alert.setContentText("Cloning into " + selectedPokemon);
             alert.showAndWait();
+
+            myPokemon.add((String) pokemonSelector.getValue());
+            //System.out.println(pokemonSelector.getValue());
+            //System.out.println(myPokemon);
+            pkmnCount++;
+
+            //String nameconverter = pokemonSelector.getValue().toString().toUpperCase();
+
+            try
+            {
+                String pokemonPrototype = DittoFactory.getInstance(DittoFactory.PokemonType.PIKACHU).toString();
+                System.out.println(pokemonPrototype);
+                newMyPokemon.add(DittoFactory.getInstance(DittoFactory.PokemonType.PIKACHU));
+                System.out.println(newMyPokemon);
+            } catch (CloneNotSupportedException err)
+            {
+                err.printStackTrace();
+            }
+
         });
 
         westPanel.getChildren().add(dittoView);
@@ -103,23 +128,28 @@ public class bootPokedex extends Application
         eastPanel.setSpacing(10);
         eastPanel.setId("east");
 
-        ScrollPane scrollPane = new ScrollPane();
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setPrefHeight(550);
         scrollPane.setPrefWidth(325);
 
-        try
+        //List<String> getPokemonList = myPokemon;
+
+        ArrayList<String> theListedPokemon = new ArrayList<>();
+
+        for (String monster : myPokemon)
         {
-            String pikachuPrototype = DittoFactory.getInstance(DittoFactory.PokemonType.PIKACHU).toString();
-            System.out.println(pikachuPrototype);
-        } catch (CloneNotSupportedException e)
-        {
-            e.printStackTrace();
+            theListedPokemon.add(monster.toString());
         }
 
+        ObservableList<String> pokemonObservableList = FXCollections.observableArrayList(theListedPokemon);
+
+        ListView pokemonList = new ListView(pokemonObservableList);
 
 
-        eastPanel.getChildren().add(scrollPane);
+
+
+
+        eastPanel.getChildren().addAll(scrollPane, pokemonList);
 
         return eastPanel;
     }
@@ -160,7 +190,7 @@ public class bootPokedex extends Application
                 "mewtwo","mew"
         );
 
-        ComboBox comboBox = new ComboBox();
+        ComboBox<String> comboBox = new ComboBox<>();
         comboBox.setPromptText("Clone a Pokemon");
         comboBox.getItems().addAll(items);
 

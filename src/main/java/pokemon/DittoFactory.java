@@ -7,6 +7,8 @@ public class DittoFactory
     public static class PokemonType
     {
         public static final String PIKACHU = "pikachu";
+        public static final String CHARMANDER = "charmander";
+
     }
 
     private static java.util.Map<String, IPokemon> prototypes = new java.util.HashMap<String, IPokemon>();
