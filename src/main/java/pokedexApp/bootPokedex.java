@@ -8,16 +8,27 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.net.URL;
 
 public class bootPokedex extends Application
 {
@@ -77,6 +88,24 @@ public class bootPokedex extends Application
 
         final ComboBox pokemonSelector = comboBuild();
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("I'm a ditto!");
+        alert.setHeaderText(null);
+
+
+
+
+        dittoView.setOnMouseClicked((MouseEvent e) -> {
+
+//            final URL resource = getClass().getResource("img/ditto.mp3");
+//            final AudioClip clip = new AudioClip(resource.toString());
+//            clip.play(1.0);
+            Object whichPKMN = pokemonSelector.getValue();
+            alert.setContentText("I'm a ditto!" + whichPKMN.toString());
+            alert.showAndWait();
+
+
+        });
 
         westPanel.getChildren().add(dittoView);
         westPanel.getChildren().add(comboLabel);
