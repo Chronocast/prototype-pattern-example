@@ -77,15 +77,13 @@ public class testPokedex extends Application
 
         dittoView.setOnMouseClicked((MouseEvent e) -> {
             String selectedPokemon = pokemonSelector.getValue().toString();
-            try
-            {
+            try{
                 IPokemon pokemonPrototype = DittoFactory.getInstance(selectedPokemon);
                 System.out.println(pokemonPrototype);
                 newMyPokemon.add(pokemonPrototype);
                 System.out.println(newMyPokemon);
                 pokemonObservableList.add(pokemonPrototype);
-            } catch (CloneNotSupportedException err)
-            {
+            } catch (CloneNotSupportedException err){
                 err.printStackTrace();
             }
         });
