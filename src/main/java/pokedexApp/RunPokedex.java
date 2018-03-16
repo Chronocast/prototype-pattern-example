@@ -154,7 +154,7 @@ public class RunPokedex extends Application
                         imageView.setImage(listOfImages[5]);
                     else if(name.toString().equals("Squirtle"))
                         imageView.setImage(listOfImages[6]);
-                    else if(name.toString().equals("Wartorlte"))
+                    else if(name.toString().equals("Wartortlte"))
                         imageView.setImage(listOfImages[7]);
                     else if(name.toString().equals("Blastoise"))
                         imageView.setImage(listOfImages[8]);
