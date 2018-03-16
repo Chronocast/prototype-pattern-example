@@ -45,10 +45,15 @@ public class RunPokedex extends Application
     private final Image IMG_METAPOD = new Image("img/metapod.jpg");
     private final Image IMG_BUTTERFREE = new Image("img/butterfree.jpg");
     private final Image IMG_PIKACHU = new Image("img/pikachu.jpg");
+    private final Image IMG_PSYDUCK = new Image("img/psyduck.jpg");
     private final Image IMG_SCYTHER = new Image("img/scyther.jpg");
+    private final Image IMG_MEWTWO = new Image("img/mewtwo.jpg");
+    private final Image IMG_MEW = new Image("img/mew.jpg");
+
 
     private Image[] listOfImages = {IMG_BULBASAUR, IMG_IVYSAUR, IMG_VENUSAUR, IMG_CHARMANDER, IMG_CHARMELEON, IMG_CHARIZARD,
-            IMG_SQUIRTLE, IMG_WARTORTLE, IMG_BLASTOISE, IMG_CATERPIE, IMG_METAPOD, IMG_BUTTERFREE,IMG_PIKACHU, IMG_SCYTHER};
+            IMG_SQUIRTLE, IMG_WARTORTLE, IMG_BLASTOISE, IMG_CATERPIE, IMG_METAPOD, IMG_BUTTERFREE,IMG_PIKACHU,IMG_PSYDUCK,IMG_SCYTHER,
+    IMG_MEWTWO, IMG_MEW};
 
     public void start(Stage stage) throws Exception
     {
@@ -169,8 +174,14 @@ public class RunPokedex extends Application
                         imageView.setImage(listOfImages[11]);
                     else if(name.toString().equals("Pikachu"))
                         imageView.setImage(listOfImages[12]);
-                    else if(name.toString().equals("Scyther"))
+                    else if(name.toString().equals("Psyduck"))
                         imageView.setImage(listOfImages[13]);
+                    else if(name.toString().equals("Scyther"))
+                        imageView.setImage(listOfImages[14]);
+                    else if(name.toString().equals("Mewtwo"))
+                        imageView.setImage(listOfImages[151]);
+                    else if(name.toString().equals("Mew"))
+                        imageView.setImage(listOfImages[152]);
                     setText(name.toString());
                     setGraphic(imageView);
                 }

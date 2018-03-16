@@ -26,7 +26,7 @@ public class DittoFactory
                 "kabutops","aerodactyl","snorlax","articuno","zapdos","moltres","dratini","dragonair","dragonite",
                 "mewtwo","mew"};
         public static final IPokemon[] POKEMONS = {Bulbasaur::new,Ivysaur::new,Venusaur::new,Charmander::new,Charmeleon::new,Charizard::new,Squirtle::new,Wartortle::new,Blastoise::new,
-                Caterpie::new, Metapod::new,Butterfree::new,Pikachu::new, Scyther::new};
+                Caterpie::new, Metapod::new,Butterfree::new,Pikachu::new,Psyduck::new,Scyther::new,Mewtwo::new,Mew::new};
     }
 
     private static Map<String, IPokemon> prototypes = new java.util.HashMap<>();
