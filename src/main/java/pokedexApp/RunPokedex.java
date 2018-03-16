@@ -41,11 +41,14 @@ public class RunPokedex extends Application
     private final Image IMG_SQUIRTLE = new Image("img/squirtle.jpg");
     private final Image IMG_WARTORTLE = new Image("img/wartortle.jpg");
     private final Image IMG_BLASTOISE = new Image("img/blastoise.jpg");
+    private final Image IMG_CATERPIE = new Image("img/caterpie.jpg");
+    private final Image IMG_METAPOD = new Image("img/metapod.jpg");
+    private final Image IMG_BUTTERFREE = new Image("img/butterfree.jpg");
     private final Image IMG_PIKACHU = new Image("img/pikachu.jpg");
     private final Image IMG_SCYTHER = new Image("img/scyther.jpg");
 
     private Image[] listOfImages = {IMG_BULBASAUR, IMG_IVYSAUR, IMG_VENUSAUR, IMG_CHARMANDER, IMG_CHARMELEON, IMG_CHARIZARD,
-            IMG_SQUIRTLE, IMG_WARTORTLE, IMG_BLASTOISE, IMG_PIKACHU, IMG_SCYTHER};
+            IMG_SQUIRTLE, IMG_WARTORTLE, IMG_BLASTOISE, IMG_CATERPIE, IMG_METAPOD, IMG_BUTTERFREE,IMG_PIKACHU, IMG_SCYTHER};
 
     public void start(Stage stage) throws Exception
     {
@@ -158,10 +161,16 @@ public class RunPokedex extends Application
                         imageView.setImage(listOfImages[7]);
                     else if(name.toString().equals("Blastoise"))
                         imageView.setImage(listOfImages[8]);
-                    else if(name.toString().equals("Pikachu"))
+                    else if(name.toString().equals("Caterpie"))
                         imageView.setImage(listOfImages[9]);
-                    else if(name.toString().equals("Scyther"))
+                    else if(name.toString().equals("Metapod"))
                         imageView.setImage(listOfImages[10]);
+                    else if(name.toString().equals("Butterfree"))
+                        imageView.setImage(listOfImages[11]);
+                    else if(name.toString().equals("Pikachu"))
+                        imageView.setImage(listOfImages[12]);
+                    else if(name.toString().equals("Scyther"))
+                        imageView.setImage(listOfImages[13]);
                     setText(name.toString());
                     setGraphic(imageView);
                 }
