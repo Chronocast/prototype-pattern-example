@@ -52,13 +52,16 @@ public class RunPokedex extends Application
     private final Image IMG_TAUROS = new Image("img/tauros.jpg");
     private final Image IMG_KABUTOPS = new Image("img/kabutops.jpg");
     private final Image IMG_SNORLAX = new Image("img/snorlax.jpg");
+    private final Image IMG_ARTICUNO = new Image("img/articuno.jpg");
+    private final Image IMG_ZAPDOS = new Image("img/zapdos.jpg");
+    private final Image IMG_MOLTRES = new Image("img/moltres.jpg");
     private final Image IMG_MEWTWO = new Image("img/mewtwo.jpg");
     private final Image IMG_MEW = new Image("img/mew.jpg");
 
 
     private Image[] listOfImages = {IMG_BULBASAUR, IMG_IVYSAUR, IMG_VENUSAUR, IMG_CHARMANDER, IMG_CHARMELEON, IMG_CHARIZARD,
             IMG_SQUIRTLE, IMG_WARTORTLE, IMG_BLASTOISE, IMG_CATERPIE, IMG_METAPOD, IMG_BUTTERFREE,IMG_PIKACHU,IMG_PSYDUCK,IMG_GROWLITHE,
-            IMG_ARCANINE,IMG_SCYTHER,IMG_TAUROS,IMG_KABUTOPS,IMG_SNORLAX,IMG_MEWTWO, IMG_MEW};
+            IMG_ARCANINE,IMG_SCYTHER,IMG_TAUROS,IMG_KABUTOPS,IMG_SNORLAX,IMG_ARTICUNO,IMG_ZAPDOS,IMG_MOLTRES,IMG_MEWTWO, IMG_MEW};
 
     public void start(Stage stage) throws Exception
     {
@@ -193,10 +196,16 @@ public class RunPokedex extends Application
                         imageView.setImage(listOfImages[18]);
                     else if(name.toString().equals("Snorlax"))
                         imageView.setImage(listOfImages[19]);
-                    else if(name.toString().equals("Mewtwo"))
+                    else if(name.toString().equals("Articuno"))
                         imageView.setImage(listOfImages[20]);
-                    else if(name.toString().equals("Mew"))
+                    else if(name.toString().equals("Zapdos"))
                         imageView.setImage(listOfImages[21]);
+                    else if(name.toString().equals("Moltres"))
+                        imageView.setImage(listOfImages[22]);
+                    else if(name.toString().equals("Mewtwo"))
+                        imageView.setImage(listOfImages[23]);
+                    else if(name.toString().equals("Mew"))
+                        imageView.setImage(listOfImages[24]);
                     setText(name.toString());
                     setGraphic(imageView);
                 }
