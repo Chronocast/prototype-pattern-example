@@ -46,14 +46,18 @@ public class RunPokedex extends Application
     private final Image IMG_BUTTERFREE = new Image("img/butterfree.jpg");
     private final Image IMG_PIKACHU = new Image("img/pikachu.jpg");
     private final Image IMG_PSYDUCK = new Image("img/psyduck.jpg");
+    private final Image IMG_GROWLITHE = new Image("img/growlithe.jpg");
+    private final Image IMG_ARCANINE = new Image("img/arcanine.jpg");
     private final Image IMG_SCYTHER = new Image("img/scyther.jpg");
+    private final Image IMG_KABUTOPS = new Image("img/kabutops.jpg");
+    private final Image IMG_SNORLAX = new Image("img/snowlax.jpg");
     private final Image IMG_MEWTWO = new Image("img/mewtwo.jpg");
     private final Image IMG_MEW = new Image("img/mew.jpg");
 
 
     private Image[] listOfImages = {IMG_BULBASAUR, IMG_IVYSAUR, IMG_VENUSAUR, IMG_CHARMANDER, IMG_CHARMELEON, IMG_CHARIZARD,
             IMG_SQUIRTLE, IMG_WARTORTLE, IMG_BLASTOISE, IMG_CATERPIE, IMG_METAPOD, IMG_BUTTERFREE,IMG_PIKACHU,IMG_PSYDUCK,IMG_SCYTHER,
-    IMG_MEWTWO, IMG_MEW};
+    IMG_GROWLITHE,IMG_ARCANINE,IMG_KABUTOPS,IMG_SNORLAX,IMG_MEWTWO, IMG_MEW};
 
     public void start(Stage stage) throws Exception
     {
@@ -176,8 +180,16 @@ public class RunPokedex extends Application
                         imageView.setImage(listOfImages[12]);
                     else if(name.toString().equals("Psyduck"))
                         imageView.setImage(listOfImages[13]);
-                    else if(name.toString().equals("Scyther"))
+                    else if(name.toString().equals("Growlithe"))
                         imageView.setImage(listOfImages[14]);
+                    else if(name.toString().equals("Arcanine"))
+                        imageView.setImage(listOfImages[15]);
+                    else if(name.toString().equals("Scyther"))
+                        imageView.setImage(listOfImages[124]);
+                    else if(name.toString().equals("Kabutops"))
+                        imageView.setImage(listOfImages[142]);
+                    else if(name.toString().equals("Snorlax"))
+                        imageView.setImage(listOfImages[144]);
                     else if(name.toString().equals("Mewtwo"))
                         imageView.setImage(listOfImages[151]);
                     else if(name.toString().equals("Mew"))
