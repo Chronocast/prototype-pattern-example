@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -20,7 +21,7 @@ import pokemon.IPokemon;
 import java.util.ArrayList;
 import java.util.List;
 
-public class testPokedex extends Application
+public class RunPokedex extends Application
 {
 
     private Stage stage;
@@ -30,6 +31,12 @@ public class testPokedex extends Application
     ListView pokemonList;
     ObservableList<String> items;
     ObservableList<IPokemon> pokemonObservableList;
+
+    private final Image IMG_CHARMANDER = new Image("img/charmander.jpg");
+    private final Image IMG_PIKACHU = new Image("img/pikachu.jpg");
+    private final Image IMG_SCYTHER = new Image("img/scyther.jpg");
+
+    private Image[] listOfImages = {IMG_CHARMANDER, IMG_PIKACHU, IMG_SCYTHER};
 
     public void start(Stage stage) throws Exception
     {
@@ -53,7 +60,7 @@ public class testPokedex extends Application
 
         vox.getChildren().add(borderPane);
 
-        return new Scene(vox, 800, 600);
+        return new Scene(vox, 1024, 768);
     }
 
     private Pane westPane()
@@ -102,6 +109,8 @@ public class testPokedex extends Application
         eastPanel.setSpacing(10);
         eastPanel.setId("east");
 
+        ScrollPane scrollPane = new ScrollPane();
+
         ArrayList<IPokemon> theListedPokemon = new ArrayList<>();
 
         theListedPokemon.addAll(newMyPokemon);
@@ -112,14 +121,38 @@ public class testPokedex extends Application
 
         pokemonList.setItems(pokemonObservableList);
 
-
+        pokemonList.setCellFactory(param -> new ListCell<IPokemon>()
+        {
+            private ImageView imageView = new ImageView();
+            public void updateItem(IPokemon name, boolean empty)
+            {
+                super.updateItem(name, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    if(name.toString().equals("Charmander"))
+                        imageView.setImage(listOfImages[0]);
+                    else if(name.toString().equals("Pikachu"))
+                        imageView.setImage(listOfImages[1]);
+                    else if(name.toString().equals("Scyther"))
+                        imageView.setImage(listOfImages[2]);
+                    setText(name.toString());
+                    setGraphic(imageView);
+                }
+            }
+        });
 
         pokemonList.setPrefHeight(550);
         pokemonList.setPrefWidth(325);
 
 
+        HBox pokeBox = new HBox(pokemonList);
 
-        eastPanel.getChildren().add(pokemonList);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        //scrollPane.getContent();
+
+        eastPanel.getChildren().add(pokeBox);
 
         return eastPanel;
     }
