@@ -32,11 +32,20 @@ public class RunPokedex extends Application
     ObservableList<String> items;
     ObservableList<IPokemon> pokemonObservableList;
 
+    private final Image IMG_BULBASAUR = new Image("img/bulbasaur.jpg");
+    private final Image IMG_IVYSAUR = new Image("img/ivysaur.jpg");
+    private final Image IMG_VENUSAUR = new Image("img/venusaur.jpg");
     private final Image IMG_CHARMANDER = new Image("img/charmander.jpg");
+    private final Image IMG_CHARMELEON = new Image("img/charmeleon.jpg");
+    private final Image IMG_CHARIZARD = new Image("img/charizard.jpg");
+    private final Image IMG_SQUIRTLE = new Image("img/squirtle.jpg");
+    private final Image IMG_WARTORTLE = new Image("img/wartortle.jpg");
+    private final Image IMG_BLASTOISE = new Image("img/blastoise.jpg");
     private final Image IMG_PIKACHU = new Image("img/pikachu.jpg");
     private final Image IMG_SCYTHER = new Image("img/scyther.jpg");
 
-    private Image[] listOfImages = {IMG_CHARMANDER, IMG_PIKACHU, IMG_SCYTHER};
+    private Image[] listOfImages = {IMG_BULBASAUR, IMG_IVYSAUR, IMG_VENUSAUR, IMG_CHARMANDER, IMG_CHARMELEON, IMG_CHARIZARD,
+            IMG_SQUIRTLE, IMG_WARTORTLE, IMG_BLASTOISE, IMG_PIKACHU, IMG_SCYTHER};
 
     public void start(Stage stage) throws Exception
     {
@@ -131,12 +140,28 @@ public class RunPokedex extends Application
                     setText(null);
                     setGraphic(null);
                 } else {
-                    if(name.toString().equals("Charmander"))
+                    if(name.toString().equals("Bulbasaur"))
                         imageView.setImage(listOfImages[0]);
-                    else if(name.toString().equals("Pikachu"))
+                    else if(name.toString().equals("Ivysaur"))
                         imageView.setImage(listOfImages[1]);
-                    else if(name.toString().equals("Scyther"))
+                    else if(name.toString().equals("Venusaur"))
                         imageView.setImage(listOfImages[2]);
+                    else if(name.toString().equals("Charmander"))
+                        imageView.setImage(listOfImages[3]);
+                    else if(name.toString().equals("Charmeleon"))
+                        imageView.setImage(listOfImages[4]);
+                    else if(name.toString().equals("Charizard"))
+                        imageView.setImage(listOfImages[5]);
+                    else if(name.toString().equals("Squirtle"))
+                        imageView.setImage(listOfImages[6]);
+                    else if(name.toString().equals("Wartorlte"))
+                        imageView.setImage(listOfImages[7]);
+                    else if(name.toString().equals("Blastoise"))
+                        imageView.setImage(listOfImages[8]);
+                    else if(name.toString().equals("Pikachu"))
+                        imageView.setImage(listOfImages[9]);
+                    else if(name.toString().equals("Scyther"))
+                        imageView.setImage(listOfImages[10]);
                     setText(name.toString());
                     setGraphic(imageView);
                 }
@@ -144,13 +169,11 @@ public class RunPokedex extends Application
         });
 
         pokemonList.setPrefHeight(550);
-        pokemonList.setPrefWidth(325);
-
+        pokemonList.setPrefWidth(400);
 
         HBox pokeBox = new HBox(pokemonList);
 
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        //scrollPane.getContent();
 
         eastPanel.getChildren().add(pokeBox);
 
