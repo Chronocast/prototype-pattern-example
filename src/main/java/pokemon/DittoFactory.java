@@ -10,9 +10,10 @@ public class DittoFactory
     {
         public static final String[] POKEMONNAMES = {"bulbasaur","ivysaur","venusaur","charmander","charmeleon","charizard",
                 "squirtle","wartortle","blastoise","caterpie","metapod","butterfree","pikachu","psyduck","growlithe","arcanine",
-                "scyther","tauros","kabutops","snorlax","articuno","zapdos","moltres","mewtwo","mew"};
+                "scyther","tauros","kabutops","snorlax","articuno","zapdos","moltres","dratini","dragonair","dragonite","mewtwo","mew"};
         public static final IPokemon[] POKEMONS = {Bulbasaur::new,Ivysaur::new,Venusaur::new,Charmander::new,Charmeleon::new,Charizard::new,Squirtle::new,Wartortle::new,Blastoise::new,
-                Caterpie::new, Metapod::new,Butterfree::new,Pikachu::new,Psyduck::new,Growlithe::new,Arcanine::new,Scyther::new,Tauros::new,Kabutops::new,Snorlax::new,Articuno::new,Zapdos::new,Moltres::new,Mewtwo::new,Mew::new};
+                Caterpie::new, Metapod::new,Butterfree::new,Pikachu::new,Psyduck::new,Growlithe::new,Arcanine::new,Scyther::new,Tauros::new,Kabutops::new,Snorlax::new,
+                Articuno::new,Zapdos::new,Moltres::new,Dratini::new,Dragonair::new,Dragonite::new,Mewtwo::new,Mew::new};
     }
 
     private static Map<String, IPokemon> prototypes = new java.util.HashMap<>();
